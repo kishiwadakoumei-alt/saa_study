@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#f5f7fc" />
+  <meta name="description" content="AWS SAA-C03 合格に向けた、正誤解説付きの無料演習問題集。間違えた問題をいつでも復習。" />
+  <title>SAA 演習室 | AWS認定 SAA-C03 対策</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+<main class="shell">
+  <header class="site-head">
+    <button class="brand" id="brand" aria-label="ホームに戻る"><span class="logo">A</span><span><b>SAA 演習室</b><small>AWS Solutions Architect — Associate</small></span></button>
+    <button id="quit" class="quiet hide">演習を終了 <span aria-hidden="true">✕</span></button>
+  </header>
+
+  <section id="home" class="view">
+    <div class="hero">
+      <p class="eyebrow">AWS CERTIFICATION · SAA-C03</p>
+      <h1>考えて、解いて、<br><span>理解を積み重ねる。</span></h1>
+      <p class="lead">選ぶたびに正誤と理由を確認。間違えた問題だけ、あとから何度でも復習できます。</p>
+      <div class="hero-foot"><span class="tag"><span class="dot"></span><b id="bank-total">60</b> 問収録</span><span class="tag">4つの試験分野</span><span class="tag">無料・ログイン不要</span></div>
+    </div>
+    <div class="stats">
+      <article><p>回答した問題</p><strong id="done">0 <small>問</small></strong></article>
+      <article><p>累計正答率</p><strong id="accuracy">—</strong></article>
+      <article><p>復習待ち</p><strong id="wrong">0 <small>問</small></strong></article>
+    </div>
+    <div class="main-grid">
+      <section class="panel start-panel">
+        <div class="panel-heading"><span class="panel-icon">✦</span><h2>問題を解く</h2></div>
+        <p class="support">出題内容を選んで、すぐに練習を開始できます。</p>
+        <div class="field-row"><div><label for="domain">分野</label><select id="domain"><option value="0">すべての分野</option><option value="1">セキュリティ設計</option><option value="2">レジリエンス設計</option><option value="3">高パフォーマンス設計</option><option value="4">コスト最適化設計</option></select></div><div><label for="difficulty">難易度</label><select id="difficulty"><option value="0">すべて</option><option value="1">初級</option><option value="2">中級</option><option value="3">上級</option></select></div></div>
+        <div class="field-row"><div><label for="count">問題数</label><select id="count"><option value="10">10問</option><option value="20" selected>20問</option><option value="all">対象の全問</option></select></div><div><label for="filter">出題対象</label><select id="filter"><option value="all">すべて（何度でも）</option><option value="new">未回答だけ</option></select></div></div>
+        <button id="start" class="btn-primary">演習を始める <span aria-hidden="true">→</span></button>
+        <p id="eligible" class="hint-line"></p>
+      </section>
+      <section class="panel review-panel">
+        <div class="panel-heading"><span class="panel-icon panel-icon-alt">↻</span><h2>復習する</h2></div>
+        <p class="support">苦手を残さず、着実に理解を定着させよう。</p>
+        <button id="reviewWrong" class="btn-secondary"><span>間違えた問題 <small id="wrongButton">0問</small></span><span aria-hidden="true">→</span></button>
+        <button id="reviewDone" class="btn-secondary"><span>解いたすべての問題</span><span aria-hidden="true">→</span></button>
+        <div class="divider"></div>
+        <h3 class="small-head">分野別の回答状況</h3>
+        <div id="domain-stats" class="domain-stats"></div>
+      </section>
+    </div>
+    <section class="utility"><p><b>データ管理</b><br><span>進捗はこのブラウザに保存します。別端末に移すならエクスポートしてください。</span></p><div class="utility-actions"><button id="export" class="quiet">履歴を書き出す</button><label for="import" class="quiet import-label">履歴を読み込む</label><input type="file" id="import" accept="application/json,.json" class="visually-hidden" /></div></section>
+  </section>
+
+  <section id="quiz" class="view hide" aria-label="演習問題">
+    <div class="quiz-head"><span id="progress" class="progress-label">1 / 20</span><span id="tags" class="tags"></span></div>
+    <div class="progress-track"><div id="progressBar" class="progress-fill" style="width:0%"></div></div>
+    <section class="panel question-panel"><span class="eyebrow">QUESTION <span id="serial">01</span></span><h2 id="stem" class="stem"></h2><p id="multihint" class="note hide">この問題は複数選択です。該当するものをすべて選んでから「回答する」を押してください。</p><div id="choices" class="choices"></div><button id="submit" class="btn-primary hide">回答する</button><section id="feedback" class="feedback hide" aria-live="polite"></section><div class="question-foot"><button id="next" class="btn-primary hide">次の問題 <span aria-hidden="true">→</span></button></div></section>
+  </section>
+
+  <section id="results" class="view hide"><section class="panel results-panel"><div class="result-badge">演習が完了しました</div><h1>おつかれさま！</h1><strong id="resultScore"></strong><p id="resultText"></p><div class="actions"><button id="goHome" class="btn-primary">ホームに戻る</button><button id="doWrong" class="btn-secondary">間違えた問題を復習 →</button></div></section></section>
+
+  <footer><p>このサイトは非公式の学習用問題集です。AWS公式試験ではなく、合格を保証するものではありません。問題内容は随時見直してください。</p><p><a href="https://aws.amazon.com/jp/certification/certified-solutions-architect-associate/" target="_blank" rel="noopener noreferrer">AWS SAA 公式試験情報 ↗</a> · 保存場所：このブラウザ内</p></footer>
+</main>
+<script src="./data/questions-201-260.js"></script>
+<!-- 追加問題はここに新しい script src を追記して読み込む -->
+<script src="./app.js"></script>
+</body>
+</html>
